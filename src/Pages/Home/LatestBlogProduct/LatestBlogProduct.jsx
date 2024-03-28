@@ -38,7 +38,7 @@ const LatestBlogProduct = () => {
                 <div className="w-64 border-2 border-white">
                     <div className="relative border-gray-200 m-1">
                         <h4 className='bg-[#E1205E] px-5 py-[5px] rounded-bl-lg text-white absolute top-0 right-0'>8 May</h4>
-                        <img src={imgBlog} alt="Shoes" className=" h-50 w-full bg-white" />
+                        <img src={imgBlog1} alt="Shoes" className=" h-50 w-full bg-white" />
                     </div>
                     <div className="text-center my-5">
                         <h2 className=" text-xl font-bold text-center pt-2">Duis quis lacinia</h2>
