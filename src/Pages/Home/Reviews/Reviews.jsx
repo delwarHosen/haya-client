@@ -35,7 +35,7 @@ const Reviews = () => {
                     {
                         reviews.map(review => <SwiperSlide className='px-16' key={review._id}>
                             <h3 className='text-4xl font-bold text-white text-center'>Customers Reviews</h3>
-                            <Rating className='mx-auto'
+                            <Rating className='mx-auto my-3'
                                 style={{ maxWidth: 100 }}
                                 value={review.rating}
                                 readOnly
