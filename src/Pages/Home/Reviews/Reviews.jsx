@@ -21,7 +21,7 @@ const Reviews = () => {
     }, [])
 
     return (
-        <div className="reviewBg bg-fixed pt-28">
+        <div className="reviewBg bg-fixed md:pt-28">
             <Swiper
                 cssMode={true}
                 navigation={true}
@@ -34,19 +34,19 @@ const Reviews = () => {
                 <div className=''>
                     {
                         reviews.map(review => <SwiperSlide className='px-16' key={review._id}>
-                            <h3 className='text-4xl font-bold text-white text-center'>Customers Reviews</h3>
+                            <h3 className='md:text-4xl text-xl font-bold text-white text-center'>Customers Reviews</h3>
                             <Rating className='mx-auto my-3'
                                 style={{ maxWidth: 100 }}
                                 value={review.rating}
-                                readOnly
+                                readOnly                    
                             />
                             
-                            <p className='text-white'>{review.details}</p>
+                            <p className='text-white md:text-[16px] text-[10px]'>{review.details}</p>
                             <div className='flex justify-center mt-4'>
-                                <img className='h-14 rounded-full' src={review.image} alt="" />
+                                <img className='md:h-14 h-10 rounded-full' src={review.image} alt="" />
                                 <div className='ml-3 text-white'>
-                                    <p className='text-lg font-semibold'>{review.name}</p>
-                                    <p>{review.designation}</p>
+                                    <p className='md:text-lg text-xs font-semibold'>{review.name}</p>
+                                    <p className='md:text-xs  text-[10px]'>{review.designation}</p>
                                 </div>
                             </div>
 

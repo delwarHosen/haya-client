@@ -1,7 +1,17 @@
 .reviewBg{
-background-image: url('../../../assets/reviews/review.jpg');
-background-repeat: no-repeat;
-background-position: center top;
+    background-image: url('../../../assets/reviews/review.jpg');
+    background-repeat: no-repeat;
+    background-position: center top;
     background-size: 100% auto;
-    height: 450px;
+    height: 550px;
 }
+
+@media screen and (min-width: 480px) {
+    .reviewBg {
+        background-image: url('../../../assets/reviews/review.jpg');
+        background-repeat: no-repeat;
+        background-position: center top;
+        background-size: 100% auto;
+        /* height: 350px; */
+    }
+  }

@@ -9,7 +9,7 @@ import Contact from '../Contact/Contact';
 
 const Home = () => {
     return (
-        <div className='max-w-screen-xl mx-auto'>
+        <div className='md:max-w-screen-xl mx-auto'>
             <div>
                 <Banner></Banner>
                 <Category></Category>
