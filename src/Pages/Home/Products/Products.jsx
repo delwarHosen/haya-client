@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import SectionTitle from '../../../components/SectionTitle/SectionTitle';
 import AllProduct from '../../Shared/AllProduct/AllProduct';
 
 const Products = () => {
     const [products, setProducts] = useState([])
     useEffect(() => {
-        fetch('products.json')
+        fetch('http://localhost:5000/products')
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])
     return (
-        <div className='my-14'>
+        <div className='pt-28'>
             <SectionTitle
                 subHeading={'Haya Collection'}
                 heading={'Our Product'}

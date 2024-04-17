@@ -6,7 +6,7 @@ import shoeImg from '../../../assets/category/shoes.png'
 
 const Category = () => {
     return (
-        <div className=''>
+        <div className='mb-0'>
             <div className='grid grid-cols-2 md:ml-14 ml-4 md:gap-x-28 gap-y-5'>
                 <div className='md:w-[650px] w-[180px] md:h-[180px]  h-[150px] bg-gradient-to-r rounded-xl from-[#F644A0] to-[#AB3E6F]'>
                     <div className='relative'>

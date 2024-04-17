@@ -6,6 +6,10 @@ import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/Login/SignUp";
 import Secret from "../Pages/Shared/Secret/Secret";
 import PrivateRoutes from "./PrivateRoutes";
+import CheckOut from "../Pages/CheckOut/CheckOut";
+import Details from "../Pages/Details/Details";
+import Cart from "../Pages/Cart/Cart";
+import Products from "../Pages/Home/Products/Products";
 
 export const router = createBrowserRouter([
     {
@@ -15,6 +19,10 @@ export const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>
+            },
+            {
+                path: '/shop',
+                element: <Products></Products>
             },
             {
                 path: '/login',
@@ -27,6 +35,20 @@ export const router = createBrowserRouter([
             {
                 path: 'secret',
                 element: <PrivateRoutes> <Secret></Secret></PrivateRoutes>
+            },
+            // {
+            //     path: 'checkout/:id',
+            //     element: <CheckOut></CheckOut>,
+            //     loader: ({params})=>fetch(`http://localhost:5000/products/${params.id}`)
+            // },
+            {
+                path: 'detail/:id',
+                element: <Details></Details>,
+                loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
+            },
+            {
+                path: 'cart',
+                element: <Cart></Cart>
             }
         ]
     },

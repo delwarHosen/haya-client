@@ -1,10 +1,10 @@
 import React from 'react';
 import '@smastrom/react-rating/style.css'
 import { Rating } from '@smastrom/react-rating';
-import { FaArrowRight } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 const AllProduct = ({ product }) => {
-    const { image, name, type, rating } = product
+    const {_id, image, name, type, rating } = product
     return (
         <div>
             <div className="w-[270px] h-72 bg-base-100 shadow-xl rounded-lg ">
@@ -20,7 +20,7 @@ const AllProduct = ({ product }) => {
                         readOnly
                     />
                     <div className=''>
-                        <button className="h-8 mt-3 rounded-b-lg bg-gradient-to-r from-[#005C62] to-[#00BCC8] text-white w-full">See Details</button>
+                        <button className="h-8  mt-3 rounded-b-lg bg-gradient-to-r from-[#005C62] to-[#00BCC8] text-white w-full"><Link to={`/detail/${_id}`} >See Details</Link></button>
                     </div>
                 </div>
             </div>

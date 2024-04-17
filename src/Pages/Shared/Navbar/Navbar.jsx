@@ -1,12 +1,13 @@
 import React, { useContext } from 'react';
-import { FaRegHeart, FaSearch, FaShoppingCart } from 'react-icons/fa';
+import {FaShoppingCart } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Provider/AuthProvider/AuthProvider';
-import { space } from 'postcss/lib/list';
+import useCarts from '../../../hooks/useCarts';
 
 const Navbar = () => {
 
     const { user, logOut } = useContext(AuthContext)
+    const [cart] = useCarts()
 
     const handleLogOut = () => {
         logOut()
@@ -16,7 +17,7 @@ const Navbar = () => {
 
     const navOption = <>
         <li><Link to='/'>Home</Link></li>
-        <li><a>Shop</a></li>
+        <li><Link to='/shop'>Shop</Link></li>
         <li><a>Contact</a></li>
         <li><a>Review</a></li>
         <li><Link to='/secret'>Secret</Link></li>
@@ -35,10 +36,10 @@ const Navbar = () => {
                     <div className='flex md:mr-6 mr-6'>
                         {/* <FaRegHeart className='md:h-8 h-4 md:w-8 w-4 mr-1 text-white'></FaRegHeart><span className='md:text-xl text-sm text-white font-semibold'>Wishlist</span> */}
                         {/* <FaSearch></FaSearch> */}
-                        <button className='flex'>
+                        <Link to='/cart' className='flex'>
                             <FaShoppingCart className='md:h-8 h-4 md:w-8 w-4 text-white'></FaShoppingCart>
-                            <div className="badge badge-secondary ml-1">+99</div>
-                        </button>
+                            <div className="badge badge-secondary ml-1">+{cart.length}</div>
+                        </Link>
                     </div>
                 </div>
             </div>
