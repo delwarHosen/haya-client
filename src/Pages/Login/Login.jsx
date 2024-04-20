@@ -3,6 +3,7 @@ import loginImg from '../../../src/assets/login/login.png'
 import { AuthContext } from '../../Provider/AuthProvider/AuthProvider';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import Swal from 'sweetalert2'
+import SocialLogin from '../../components/SocialLogin';
 
 const Login = () => {
 
@@ -73,6 +74,9 @@ const Login = () => {
                         </div>
                     </form>
                     <p className='p-3'><small>Create an new acount? Please <Link className='text-purple-600 font-semibold' to='/signup'>sign up</Link></small></p>
+                    <div>
+                        <SocialLogin></SocialLogin>
+                    </div>
                 </div>
             </div>
         </div>

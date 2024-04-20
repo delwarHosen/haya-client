@@ -36,7 +36,7 @@ const Navbar = () => {
                     <div className='flex md:mr-6 mr-6'>
                         {/* <FaRegHeart className='md:h-8 h-4 md:w-8 w-4 mr-1 text-white'></FaRegHeart><span className='md:text-xl text-sm text-white font-semibold'>Wishlist</span> */}
                         {/* <FaSearch></FaSearch> */}
-                        <Link to='/cart' className='flex'>
+                        <Link to='/dashboard/cart' className='flex'>
                             <FaShoppingCart className='md:h-8 h-4 md:w-8 w-4 text-white'></FaShoppingCart>
                             <div className="badge badge-secondary ml-1">+{cart.length}</div>
                         </Link>

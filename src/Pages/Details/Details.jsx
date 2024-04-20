@@ -108,7 +108,7 @@ const Details = () => {
                         <button onClick={increment} className='btn btn-active btn-ghost'>+</button><br />
                         {/* <p>total :{}</p> */}
                         <button onClick={handleAddToCart} className="btn bg-[#E1205E] my-4 text-white">Add to Cart</button>
-                        <Link className='btn ml-8 bg-[#E1205E] text-white font-semibold' to='/cart'>Show Cart</Link>
+                        <Link className='btn ml-8 bg-[#E1205E] text-white font-semibold' to='/dashboard/cart'>Show Cart</Link>
                         <Link className='btn ml-8 text-purple-600 font-semibold' to='/'>Home</Link>
                         <div className='flex'>
                             <FaCarSide className='w-16 h-16 mt-5'></FaCarSide><p className='mt-10 ml-2'>Delivery policy(edit with the Customer Reassurance module)</p>

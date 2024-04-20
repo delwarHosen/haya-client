@@ -4,8 +4,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../Provider/AuthProvider/AuthProvider';
 import Swal from 'sweetalert2'
+import useAxiosPublic from '../../hooks/useAxiosPublic';
+import SocialLogin from '../../components/SocialLogin';
 
 const SignUp = () => {
+    const axiosPublic = useAxiosPublic()
     const { register, handleSubmit, reset, formState: { errors }, } = useForm()
     const { createUser, userUpdateProfile } = useContext(AuthContext)
     const navigate = useNavigate()
@@ -14,20 +17,32 @@ const SignUp = () => {
         console.log(data)
         createUser(data.email, data.password)
             .then(result => {
-                const creactAccount = result.createUser;
+                const creactAccount = result.user;
                 console.log(creactAccount)
                 userUpdateProfile(data.name)
-                    .then(() => console.log('update user profile'))
+                    .then(() => {
+                        const userInfo = {
+                            name: data.name,
+                            email: data.email
+                        }
+                        axiosPublic.post('/users', userInfo)
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                    console.log('user added to the database');
+                                    reset()
+                                    Swal.fire({
+                                        position: "top-end",
+                                        icon: "success",
+                                        title: "Your work has been saved",
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
+                                    navigate('/')
+                                }
+                            })
+
+                    })
                     .catch(err => console.log(err.message))
-                reset()
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Your work has been saved",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-                navigate('/')
             })
     }
 
@@ -78,6 +93,9 @@ const SignUp = () => {
                         </div>
                     </form>
                     <p className='p-3'><small>already have an acount? Please <Link className='text-purple-600 font-semibold' to='/login'>Login</Link></small></p>
+                    <div>
+                        <SocialLogin></SocialLogin>
+                    </div>
                 </div>
             </div>
         </div>
