@@ -13,6 +13,8 @@ import Products from "../Pages/Home/Products/Products";
 import Dashboard from "../Layouts/Dashboard";
 import Cart from "../Pages/Dashboard/Cart/Cart";
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
+import AddProduct from "../Pages/Dashboard/AddProduct/AddProduct";
+import AdminRoutes from "./AdminRoutes";
 // import Dashboard from "../Layouts/Dashboard";
 // import Cart from "../Pages/Dashboard/Cart/Cart";
 // import Cart from "../Pages/Dashboard/Cart/Cart";
@@ -59,8 +61,14 @@ export const router = createBrowserRouter([
             },
             // addmin routes
             {
+                path: 'addProduct',
+                // element:<AddProduct></AddProduct>
+                element: <AdminRoutes><AddProduct></AddProduct></AdminRoutes>
+            },
+            {
                 path: 'allUsers',
-                element:<AllUsers></AllUsers>
+                // element:<AllUsers></AllUsers>
+                element: <AdminRoutes><AllUsers></AllUsers></AdminRoutes>
             }
         ]
     }

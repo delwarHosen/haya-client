@@ -50,7 +50,7 @@ const Details = () => {
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
                 cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, delete it!"
+                confirmButtonText: "Yes, Add to the cart!"
             }).then((result) => {
                 if (result.isConfirmed) {
                     navigate('/login')
@@ -122,4 +122,3 @@ const Details = () => {
 
 export default Details;
 
-// (_id, name, image, price)

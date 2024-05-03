@@ -4,11 +4,12 @@ import Navbar from '../Pages/Shared/Navbar/Navbar';
 import { FaBook, FaHome, FaProductHunt, FaShoppingCart, FaUserAlt, FaUsers, FaVoicemail } from 'react-icons/fa';
 import { FaShop } from 'react-icons/fa6';
 import useCarts from '../hooks/useCarts';
+import useAdmin from '../hooks/useAdmin';
 
 const Dashboard = () => {
     const [cart] = useCarts()
 
-    const isAdmin = true;
+    const [isAdmin] = useAdmin();
     return (
         <>
             <Navbar></Navbar>
@@ -44,7 +45,7 @@ const Dashboard = () => {
                                             <FaShoppingCart></FaShoppingCart>My Cart ({cart.length})</NavLink>
                                     </li>
                                     <li className='my-1'>
-                                        <NavLink to='/dashboard/product'><FaProductHunt></FaProductHunt> Add Product</NavLink>
+                                        <NavLink to='/dashboard/addProduct'><FaProductHunt></FaProductHunt> Add Product</NavLink>
                                     </li>
                                     <li className='my-1'>
                                         <NavLink to='/dashboard/shop'>Manage shop</NavLink>
