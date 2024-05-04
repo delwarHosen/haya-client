@@ -15,6 +15,8 @@ import Cart from "../Pages/Dashboard/Cart/Cart";
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 import AddProduct from "../Pages/Dashboard/AddProduct/AddProduct";
 import AdminRoutes from "./AdminRoutes";
+import ManageItems from "../Pages/Dashboard/ManageItems/ManageItems";
+import UpdateProduct from "../Pages/Dashboard/UpdateProduct/UpdateProduct";
 // import Dashboard from "../Layouts/Dashboard";
 // import Cart from "../Pages/Dashboard/Cart/Cart";
 // import Cart from "../Pages/Dashboard/Cart/Cart";
@@ -64,6 +66,15 @@ export const router = createBrowserRouter([
                 path: 'addProduct',
                 // element:<AddProduct></AddProduct>
                 element: <AdminRoutes><AddProduct></AddProduct></AdminRoutes>
+            },
+            {
+                path: 'manageProduct',
+                element: <AdminRoutes><ManageItems></ManageItems></AdminRoutes>
+            },
+            {
+                path:'updateProduct/:id',
+                element: <AdminRoutes><UpdateProduct></UpdateProduct></AdminRoutes>,
+                loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
             },
             {
                 path: 'allUsers',

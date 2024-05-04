@@ -1,13 +1,17 @@
-import { useForm } from "react-hook-form"
-import useAxiosPublic from './../../../hooks/useAxiosPublic';
-import useAxiosSecure from './../../../hooks/useAxiosSecure';
-import Swal from 'sweetalert2'
+import { useForm } from "react-hook-form";
+import { useLoaderData } from "react-router-dom";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
+
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOISTING_KEY
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
 
-const AddProduct = () => {
-    const { register, handleSubmit } = useForm()
+const UpdateProduct = () => {
+    const { name, category, price, type, rating, details, _id } = useLoaderData()
+
+    const { register, handleSubmit, reset } = useForm()
     const axiosPublic = useAxiosPublic()
     const axiosSecure = useAxiosSecure()
     const onSubmit = async (data) => {
@@ -30,13 +34,14 @@ const AddProduct = () => {
                 type: data.type,
                 image: res.data.data.display_url
             }
-            const product = await axiosSecure.post('/products', productItem)
+            const product = await axiosSecure.patch(`/products/${_id}`, productItem)
             console.log(product.data);
-            if (product.data.modifiedCount > 0) {
+            if (product.data.insertedId) {
+                reset()
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
-                    title: `${data.name} added the Product item`,
+                    title: `${name} is updated product`,
                     showConfirmButton: false,
                     timer: 1500
                 });
@@ -44,9 +49,10 @@ const AddProduct = () => {
         }
         console.log(res.data);
     }
+
     return (
-        <div className='m-3'>
-            <h2 className='text-center text-2xl font-bold mt-2'>Add Product</h2>
+        <div className="m-2">
+            <h2 className='text-3xl font-bold text-center'>Update Product</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
                 {/* Product Name */}
                 <div>
@@ -56,7 +62,7 @@ const AddProduct = () => {
                                 <span className="label-text">Product Name</span>
                             </div>
                         </label>
-                        <input {...register("name")} type="text" placeholder="Type here" className="input input-bordered w-full" />
+                        <input defaultValue={name} {...register("name")} type="text" placeholder="Type here" className="input input-bordered w-full" />
                     </div>
 
                 </div>
@@ -68,7 +74,7 @@ const AddProduct = () => {
                                 <span className="label-text">Category</span>
                             </div>
                         </label>
-                        <select defaultValue="default" {...register("category")} className='select select-bordered w-full'>
+                        <select defaultValue={category} {...register("category")} className='select select-bordered w-full'>
                             <option disabled value="default">Select a category</option>
                             <option value="Men Shirt">Men Shirt</option>
                             <option value="Men T-Shirt">Men T-Shirt</option>
@@ -88,7 +94,7 @@ const AddProduct = () => {
                                 <span className="label-text">Price</span>
                             </div>
                         </label>
-                        <input {...register("price")} type="number" placeholder="Type here" className="input input-bordered w-full" />
+                        <input defaultValue={price} {...register("price")} type="number" placeholder="Type here" className="input input-bordered w-full" />
                     </div>
                 </div>
                 <div className='flex gap-4'>
@@ -99,7 +105,7 @@ const AddProduct = () => {
                                 <span className="label-text">Product Type</span>
                             </div>
                         </label>
-                        <input {...register("type")} type="text" placeholder="Type here" className="input input-bordered w-full" />
+                        <input defaultValue={type} {...register("type")} type="text" placeholder="Type here" className="input input-bordered w-full" />
                     </div>
 
                     <div className='form-control w-full my-2'>
@@ -108,7 +114,7 @@ const AddProduct = () => {
                                 <span className="label-text">Rating</span>
                             </div>
                         </label>
-                        <input {...register("rating")} type="number" placeholder="Type here" className="input input-bordered w-full" />
+                        <input defaultValue={rating} {...register("rating")} type="number" placeholder="Type here" className="input input-bordered w-full" />
                     </div>
                 </div>
                 {/* Details */}
@@ -118,15 +124,15 @@ const AddProduct = () => {
                             <span className="label-text">Details</span>
                         </div>
                     </label>
-                    <textarea {...register("details")} className="textarea textarea-bordered" placeholder="Product Details"></textarea>
+                    <textarea defaultValue={details} {...register("details")} className="textarea textarea-bordered" placeholder="Product Details"></textarea>
                 </div>
                 <div className='form-control w-full'>
                     <input {...register("image")} type="file" className="file-input w-full max-w-xs" />
                 </div>
-                <button className='btn btn-primary'>Update Product</button>
+                <button className='btn btn-primary'>Add Product</button>
             </form>
         </div>
     );
 };
 
-export default AddProduct;
+export default UpdateProduct;

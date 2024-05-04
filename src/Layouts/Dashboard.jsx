@@ -1,7 +1,6 @@
-import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import Navbar from '../Pages/Shared/Navbar/Navbar';
-import { FaBook, FaHome, FaProductHunt, FaShoppingCart, FaUserAlt, FaUsers, FaVoicemail } from 'react-icons/fa';
+import { FaEdit, FaHome, FaProductHunt, FaShoppingCart, FaUserAlt, FaUsers, FaVoicemail } from 'react-icons/fa';
 import { FaShop } from 'react-icons/fa6';
 import useCarts from '../hooks/useCarts';
 import useAdmin from '../hooks/useAdmin';
@@ -27,10 +26,10 @@ const Dashboard = () => {
                                         <NavLink to='/dashboard/addProduct'><FaProductHunt></FaProductHunt> Add Product</NavLink>
                                     </li>
                                     <li className='my-1'>
-                                        <NavLink to='/dashboard/ManageShop'><FaShoppingCart></FaShoppingCart> Manage shop</NavLink>
+                                        <NavLink to='/dashboard/manageProduct'><FaShoppingCart></FaShoppingCart> Manage shop</NavLink>
                                     </li>
                                     <li className='my-1'>
-                                        <NavLink to='/dashboard/manageBooking'><FaBook></FaBook> Manage Booking</NavLink>
+                                        <NavLink to='/dashboard/manageBooking'><FaEdit></FaEdit> Manage Booking</NavLink>
                                     </li>
                                     <li className='my-1'>
                                         <NavLink to='/dashboard/allUsers'><FaUsers></FaUsers> All Users</NavLink>
